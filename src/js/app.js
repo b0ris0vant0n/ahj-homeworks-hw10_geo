@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
   
 	async function getUserCoordinates() {
-		return new Promise((resolve) => {
+		return new Promise((resolve, reject) => {
 			navigator.geolocation.getCurrentPosition(
 			positionAvailable => {
 			const latitude = positionAvailable.coords.latitude;
@@ -69,8 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				manualCoordinatesModal.style.display = 'block';
 			}
 			resolve({ latitude, longitude });
-			}, error => {
-				manualCoordinatesModal.style.display = 'block';
+		},
+		error => {
+			manualCoordinatesModal.style.display = 'block';
 		}
 		);
 	});

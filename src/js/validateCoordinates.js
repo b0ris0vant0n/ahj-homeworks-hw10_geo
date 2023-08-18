@@ -1,4 +1,4 @@
-export function validateCoordinates(input) {
+export default function validateCoordinates(input) {
   const regex = /([-+]?\d+\.\d+),\s?([-+]?\d+\.\d+)/;
   const match = input.match(regex);
   if (!match) {
