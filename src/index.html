@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline</title>
+</head>
+<body>
+  <div class="timeline">
+    <h1>Timeline</h1>
+    <div class="post-form">
+      <input type="text" id="post-input" placeholder="Enter your post...">
+      <button class='button' id="add-post-btn">Add Post</button>
+    </div>
+    <div id="posts" class="posts">
+    </div>
+  </div>
+  <div id="manual-coordinates-modal" class="modal">
+	<div class="modal-content">
+	  <span class="close" id="close-modal">&times;</span>
+	  <p>Что-то пошло не так...</p>
+	  <p>К сожалению, нам не удалось определить ваше местоположение, пожалуйста, дайте разрешение на использование геолокации, либо введите координаты
+		вручную.:</p>
+	  <input type="text" id="manual-inp" placeholder="coordinates">
+
+	  <button id="submit-coordinates">Submit</button>
+	</div>
+  </div>
+</body>
+</html>
+
