@@ -11,37 +11,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	
 	addPostBtn.addEventListener('click', async () => {
-	  const postText = postInput.value.trim();
-	  if (postText !== '') {
-		try {
-		  const coordinates = await getUserCoordinates();
-		  const postDate = new Date();
-		  const post = createPostElement(postText, coordinates, postDate);
-		  postsContainer.insertBefore(post, postsContainer.firstChild);
-		  postInput.value = '';
-		} catch (error) {
-		  alert('Error: ' + error.message);
-		  manualCoordinatesModal.style.display = 'block';
+		const postText = postInput.value.trim();
+		if (postText !== '') {
+			try {
+			const coordinates = await getUserCoordinates();
+			const postDate = new Date();
+			const post = createPostElement(postText, coordinates, postDate);
+			postsContainer.insertBefore(post, postsContainer.firstChild);
+			postInput.value = '';
+			} catch (error) {
+			alert('Error: ' + error.message);
+			manualCoordinatesModal.style.display = 'block';
 		}
-	  }
+		}
 	});
   
 	closeModalBtn.addEventListener('click', () => {
-	  manualCoordinatesModal.style.display = 'none';
+		manualCoordinatesModal.style.display = 'none';
 	});
   
 	submitCoordinatesBtn.addEventListener('click', () => {
 		const coordinatesInput = manualInput.value.trim();
-		console.log('coordinatesInput:', coordinatesInput);
-  		const coordinatesArray = coordinatesInput.split(/[\s,]+/);
-		console.log('coordinatesArray:', coordinatesArray);
-  		if (coordinatesArray.length !== 2) {
-    		alert('Please enter valid coordinates.');
-    		return;
-  		}
+		const coordinatesArray = coordinatesInput.split(/[\s,]+/);
+		
+		if (coordinatesArray.length !== 2) {
+			alert('Please enter valid coordinates.');
+			return;
+		}
 
-  		const manualLat = parseFloat(coordinatesArray[0]);
-  		const manualLng = parseFloat(coordinatesArray[1]);
+		const manualLat = parseFloat(coordinatesArray[0]);
+		const manualLng = parseFloat(coordinatesArray[1]);
 
 		try {
 			validateCoordinates(coordinatesInput);
@@ -59,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
   
 	async function getUserCoordinates() {
-	  return new Promise((resolve, reject) => {
-		navigator.geolocation.getCurrentPosition(
-		  positionAvailable => {
+		return new Promise((resolve) => {
+			navigator.geolocation.getCurrentPosition(
+			positionAvailable => {
 			const latitude = positionAvailable.coords.latitude;
 			const longitude = positionAvailable.coords.longitude;
 			if (positionAvailable) {
@@ -70,23 +69,22 @@ document.addEventListener('DOMContentLoaded', () => {
 				manualCoordinatesModal.style.display = 'block';
 			}
 			resolve({ latitude, longitude });
-		  },
-		  error => {
-			manualCoordinatesModal.style.display = 'block';;
+			}, error => {
+				manualCoordinatesModal.style.display = 'block';
 		}
 		);
-	  });
+	});
 	}
   
 	function createPostElement(text, coordinates, date) {
-	  const postElement = document.createElement('div');
-	  postElement.className = 'post';
-	  postElement.innerHTML = `
-		<p>${text}</p>
-		<p class='coordinates'>[${coordinates.latitude}, ${coordinates.longitude}]</p>
-		<p class='date'>${date.toLocaleString()}</p>
-	  `;
-	  return postElement;
+		const postElement = document.createElement('div');
+		postElement.className = 'post';
+		postElement.innerHTML = `
+			<p>${text}</p>
+			<p class='coordinates'>[${coordinates.latitude}, ${coordinates.longitude}]</p>
+			<p class='date'>${date.toLocaleString()}</p>
+	  	`;
+		return postElement;
 	}
   });
   

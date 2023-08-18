@@ -1,16 +1,18 @@
 {
   "plugins": ["prettier"],
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "extends": ["eslint:recommended"],
   "env": {
     "es6": true,
     "browser": true,
     "jest/globals": true
   },
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2020
   },
   "rules": {
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "no-mixed-spaces-and-tabs": "error"
   },
   "overrides": [
     {
