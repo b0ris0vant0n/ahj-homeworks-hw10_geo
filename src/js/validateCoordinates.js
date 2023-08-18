@@ -1,4 +1,4 @@
-function validateCoordinates(input) {
+export function validateCoordinates(input) {
   const regex = /([-+]?\d+\.\d+),\s?([-+]?\d+\.\d+)/;
   const match = input.match(regex);
   if (!match) {
@@ -7,6 +7,4 @@ function validateCoordinates(input) {
   const latitude = parseFloat(match[1]);
   const longitude = parseFloat(match[2]);
   return { latitude, longitude };
-}
-;
-module.exports = validateCoordinates
+};
