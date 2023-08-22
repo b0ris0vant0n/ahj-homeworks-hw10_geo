@@ -171,19 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
 	submitCoordinatesBtn.addEventListener('click', () => {
 		const coordinatesInput = manualInput.value.trim();
-		const coordinatesArray = coordinatesInput.split(/[\s,]+/);
-		
-		if (coordinatesArray.length !== 2) {
-			alert('Please enter valid coordinates.');
-			return;
-		}
-
-		const manualLat = parseFloat(coordinatesArray[0]);
-		const manualLng = parseFloat(coordinatesArray[1]);
-
+		console.log(manualInput.value)
 		try {
-			validateCoordinates(coordinatesInput);
-			const coordinates = { latitude: manualLat, longitude: manualLng };
+			const coordinates = validateCoordinates(coordinatesInput);
 			const postText = postInput.value.trim();
 			const postDate = new Date();
 			const post = createPostElement(postText, coordinates, postDate);

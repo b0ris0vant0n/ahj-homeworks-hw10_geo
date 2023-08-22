@@ -1,5 +1,5 @@
 export default function validateCoordinates(input) {
-  const regex = /([-+]?\d+\.\d+),\s?([-+]?\d+\.\d+)/;
+  const regex = /([-+]?\d+\.\d+)\s?,?\s?([-+]?\d+\.\d+)/;
   const match = input.match(regex);
   if (!match) {
     throw new Error("Invalid coordinate format");
