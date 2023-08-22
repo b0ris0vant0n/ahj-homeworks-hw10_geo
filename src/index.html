@@ -4,28 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Timeline</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
   <div class="timeline">
     <h1>Timeline</h1>
     <div class="post-form">
-      <input type="text" id="post-input" placeholder="Enter your post...">
-      <button class='button' id="add-post-btn">Add Post</button>
+      <div class="buttons">
+        <input type="text" id="post-input" placeholder="Enter your post...">
+        <button class='button' id="add-post-btn">Add Post</button>
+        <button class="material-icons" id="start-record-btn">mic</button>
+        <button class='button' id="start-video-btn"><i class="material-icons">videocam</i></button>
+      </div>
+      <div id="video-preview-container" style="display: none;">
+        <video controls autoplay muted loop id="video-preview"></video>
+      </div>
+      <div class="recording-container">
+        <button class="material-icons" id="stop-record-btn" style="display: none;">check</button>
+        <div id="timer" class="time" style="display: none;">0:00</div>
+        <button class="material-icons" id="cancel-record-btn" style="display: none;">close</button>
+      </div>
+      <input type="text" id="manual-inp" placeholder="coordinates" style="display: none;">
+      <span id="timer" style="display: none;"></span>
     </div>
     <div id="posts" class="posts">
     </div>
   </div>
   <div id="manual-coordinates-modal" class="modal">
-	<div class="modal-content">
-	  <span class="close" id="close-modal">&times;</span>
-	  <p>Что-то пошло не так...</p>
-	  <p>К сожалению, нам не удалось определить ваше местоположение, пожалуйста, дайте разрешение на использование геолокации, либо введите координаты
-		вручную.:</p>
-	  <input type="text" id="manual-inp" placeholder="coordinates">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <p>Что-то пошло не так...</p>
+      <p>К сожалению, нам не удалось определить ваше местоположение, пожалуйста, дайте разрешение на использование геолокации, либо введите координаты
+        вручную:</p>
+      <input type="text" id="manual-inp" placeholder="coordinates">
 
-	  <button id="submit-coordinates">Submit</button>
-	</div>
+      <button id="submit-coordinates" class='button'>Submit</button>
+    </div>
   </div>
 </body>
 </html>
-

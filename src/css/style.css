@@ -3,7 +3,7 @@ body {
   }
   
   .timeline {
-	max-width: 800px;
+	max-width: 70%;
 	margin: 0 auto;
 	padding: 20px;
   }
@@ -44,9 +44,9 @@ body {
 
   .coordinates {
 	font-size: 12px;
+	text-align: left;
   }
   
-  /* Добавьте следующие стили для модального окна */
 .modal {
 	display: none;
 	position: fixed;
@@ -80,3 +80,45 @@ body {
 	cursor: pointer;
   }
   
+
+  .audio-post {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 10px 0;
+  }
+
+.video-post {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 10px 0;
+	display: flex;
+	flex-direction: column; 
+	gap: 10px;
+  }
+  
+  .post video {
+	max-width: 70%;
+	height: auto;
+  }
+
+  .recording-container {
+	justify-content: center;
+	vertical-align: middle;
+	padding-top: 10px;
+	display: flex;
+  }
+
+  .buttons {
+	display: flex;
+	vertical-align: middle;
+  }
+
+input {
+	margin-right: 10px;
+	width: 70%;
+}
+
+.time {
+	margin-top: 5px;
+	font-size: 16px;
+}
